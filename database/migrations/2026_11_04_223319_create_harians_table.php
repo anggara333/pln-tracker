@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('harians', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
+            $table->string('uraian');
+            $table->decimal('kredit', 15, 2)->default(0);
+            $table->decimal('debit', 15, 2)->default(0);
+            $table->decimal('saldo', 15, 2)->default(0);
+            $table->text('catatan')->nullable();
             $table->timestamps();
         });
     }
