@@ -128,7 +128,7 @@ class HarianController extends Controller
 
 public function exportPdf()
 {
-    $harians = Harian::orderBy('tanggal','desc')->orderBy('id','desc')->get();
+    $harians = Harian::orderBy('tanggal','asc')->orderBy('id','desc')->get();
     $totalKredit = $harians->sum('kredit');
     $totalDebit = $harians->sum('debit');
     $saldoAkhir = $harians->first()?->saldo ?? 0;

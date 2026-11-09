@@ -1,0 +1,92 @@
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0a0e1a;color:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;min-height:100vh;display:flex;flex-direction:column}
+button,input,select,textarea{font-family:inherit}
+.header{padding:24px 24px 0;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;background:#facc15;border-radius:12px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:22px;height:22px;fill:#000}
+.bold{font-weight:700;letter-spacing:-.3px}
+.btn-input{background:#facc15;color:#000;font-weight:700;padding:8px 16px;border-radius:12px;font-size:13px;border:none;cursor:pointer;display:flex;align-items:center;gap:6px}
+.btn-input svg{width:13px;height:13px;fill:#000}
+.btn-input.green{background:#22c55e;color:#fff}
+.btn-input.green svg{fill:#fff}
+.main{flex:1;padding:0 24px 100px}
+.tabs{display:flex;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:6px;border-radius:16px;margin:20px 0}
+.tab{flex:1;padding:12px;border-radius:12px;border:none;background:transparent;color:#94a3b8;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.tab svg{width:16px;height:16px;fill:currentColor}
+.tab.active{background:#facc15;color:#000}
+.tab.active-green{background:#22c55e;color:#fff}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.alert{background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.3);color:#4ade80;padding:12px;border-radius:12px;font-size:13px;margin-bottom:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:16px}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:8px 10px}
+.card.green{border-color:rgba(34,197,94,.3)}
+.label{font-size:9px;color:#94a3b8;letter-spacing:.8px}
+.big{font-size:15px;font-weight:700;color:#facc15;margin-top:2px}
+.big-green{font-size:15px;font-weight:700;color:#4ade80;margin-top:2px}
+.big2{font-size:12px;font-weight:600;margin-top:2px;word-break:break-all}
+.list{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden}
+.row{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.05);transition:.15s}
+.row:last-child{border-bottom:none}
+.row.selected{background:rgba(250,204,21,.08)}
+#tabHarian .row.selected{background:rgba(34,197,94,.08)}
+.row-title{font-weight:700;font-size:13px}
+.row-sub{font-size:11px;color:#94a3b8;margin-top:2px}
+.row-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.row-check{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.price{font-weight:700;font-size:13px;color:#facc15;white-space:nowrap}
+.price-green{font-weight:700;font-size:13px;color:#4ade80;white-space:nowrap}
+.price-red{font-weight:700;font-size:13px;color:#f87171;white-space:nowrap}
+.badge{font-size:10px;padding:3px 8px;border-radius:999px;font-weight:700}
+.badge-in{background:rgba(34,197,94,.2);color:#4ade80}
+.badge-out{background:rgba(239,68,68,.2);color:#f87171}
+.btn-del{width:30px;height:30px;background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.3);border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.btn-del svg{width:14px;height:14px;fill:#f87171}
+.empty{padding:24px;text-align:center;color:#94a3b8;font-size:13px}
+.toolbar{display:flex;gap:8px;margin-bottom:10px;align-items:center}
+.btn-tool{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:10px;border-radius:12px;font-weight:700;font-size:12px;cursor:pointer;text-decoration:none;text-align:center;display:block}
+.btn-select{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:10px;border-radius:12px;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-select.active{background:rgba(250,204,21,.15);border-color:rgba(250,204,21,.5);color:#facc15}
+.btn-select.active-green{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.5);color:#4ade80}
+.chk{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-radius:6px;background:transparent;cursor:pointer;position:relative;flex-shrink:0}
+.chk:checked{background:#facc15;border-color:#facc15}
+.chk:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:900}
+.chk-green:checked{background:#22c55e;border-color:#22c55e}
+.chk-green:checked::after{color:#fff}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal.open{display:flex}
+.modal-box{background:#151a2c;border:1px solid rgba(255,255,255,.1);border-radius:24px;width:100%;max-width:384px;padding:24px;max-height:90vh;overflow-y:auto}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.btn-x{width:32px;height:32px;background:rgba(255,255,255,.1);border:none;border-radius:999px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.btn-x svg{width:12px;height:12px;fill:#fff}
+.form{display:flex;flex-direction:column;gap:16px}
+.input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;margin-top:4px;color:#fff;font-size:13px;outline:none}
+.input-yellow{background:rgba(255,255,255,.1);border-color:rgba(250,204,21,.5);color:#facc15;font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.label-y{font-size:10px;color:#facc15}
+.flex-gap{display:flex;gap:8px;margin-top:4px}
+.live{flex:1;background:rgba(250,204,21,.1);border:1px solid rgba(250,204,21,.2);border-radius:12px;padding:12px;font-size:12px;color:#facc15;font-weight:700;text-align:right;display:flex;align-items:center;justify-content:flex-end}
+.btn-save{width:100%;background:#facc15;color:#000;font-weight:700;padding:16px;border-radius:12px;border:none;cursor:pointer;font-size:14px}
+.btn-save.green{background:#22c55e;color:#fff}
+.del-box{text-align:center}
+.del-icon{width:56px;height:56px;background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.3);border-radius:999px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.del-icon svg{width:26px;height:26px;fill:#f87171}
+.del-text{font-size:13px;color:#94a3b8;margin-top:8px}
+.del-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.btn-cancel{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);padding:12px;border-radius:12px;font-weight:700;font-size:13px;color:#fff;cursor:pointer}
+.btn-confirm{background:#ef4444;color:#fff;padding:12px;border-radius:12px;font-weight:700;font-size:13px;border:none;cursor:pointer}
+.toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:12px}
+.toggle button{padding:10px;border:none;border-radius:9px;font-weight:700;font-size:13px;cursor:pointer;background:transparent;color:#94a3b8}
+.toggle button.on-in{background:#22c55e;color:#fff}
+.toggle button.on-out{background:#ef4444;color:#fff}
+.bulk-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;background:#1e2438;border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:12px 14px;display:none;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.bulk-bar.show{display:flex;animation:slideUp .2s ease}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.bulk-info{font-size:12px;font-weight:700}
+.bulk-info small{display:block;color:#94a3b8;font-weight:400;font-size:11px;margin-top:2px}
+.bulk-actions{display:flex;gap:8px;flex-shrink:0}
+.btn-bulk-cancel{background:rgba(255,255,255,.1);border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer}
+.btn-bulk-del{background:#ef4444;border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer}
+.bulk-modal-list{max-height:140px;overflow-y:auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;text-align:left;font-size:12px;line-height:1.8;margin:14px 0}
+

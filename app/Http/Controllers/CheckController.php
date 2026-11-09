@@ -154,7 +154,7 @@ class CheckController extends Controller
 
 public function exportPdf()
 {
-    $checks = Check::orderBy('tanggal','desc')->get();
+    $checks = Check::orderBy('tanggal','asc')->get();
     $totalKwh = $checks->sum('selisih');
     $totalBayar = $checks->sum('pakai');
     $rataKwh = $checks->count() ? $totalKwh / $checks->count() : 0;
