@@ -1,92 +1,131 @@
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0a0e1a;color:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;min-height:100vh;display:flex;flex-direction:column}
-button,input,select,textarea{font-family:inherit}
-.header{padding:24px 24px 0;display:flex;justify-content:space-between;align-items:center}
-.logo{display:flex;align-items:center;gap:12px}
-.logo-icon{width:40px;height:40px;background:#facc15;border-radius:12px;display:flex;align-items:center;justify-content:center}
-.logo-icon svg{width:22px;height:22px;fill:#000}
-.bold{font-weight:700;letter-spacing:-.3px}
-.btn-input{background:#facc15;color:#000;font-weight:700;padding:8px 16px;border-radius:12px;font-size:13px;border:none;cursor:pointer;display:flex;align-items:center;gap:6px}
-.btn-input svg{width:13px;height:13px;fill:#000}
-.btn-input.green{background:#22c55e;color:#fff}
-.btn-input.green svg{fill:#fff}
-.main{flex:1;padding:0 24px 100px}
-.tabs{display:flex;gap:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:6px;border-radius:16px;margin:20px 0}
-.tab{flex:1;padding:12px;border-radius:12px;border:none;background:transparent;color:#94a3b8;font-weight:700;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
-.tab svg{width:16px;height:16px;fill:currentColor}
-.tab.active{background:#facc15;color:#000}
-.tab.active-green{background:#22c55e;color:#fff}
+html{-webkit-tap-highlight-color:transparent}
+body{background:#202020;color:#fff;font-family:'Segoe UI Variable','Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+button,input,select,textarea{font-family:inherit;outline:none}
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none;cursor:pointer}
+button:focus{outline:none}
+button:focus-visible{outline:2px solid #4cc2ff;outline-offset:1px}
+/* Header - Windows 11 Title Bar */
+.header{padding:20px 20px 0;display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;align-items:center;gap:12px;font-size:18px}
+.logo-icon{width:44px;height:44px;background:#4cc2ff;border-radius:8px;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:24px;height:24px;fill:#000}
+.bold{font-weight:600;letter-spacing:0}
+.btn-input{background:#4cc2ff;color:#000;font-weight:600;padding:10px 18px;border-radius:4px;font-size:14px;border:none;cursor:pointer;display:flex;align-items:center;gap:8px;position:relative;overflow:hidden}
+.btn-input svg{width:16px;height:16px;fill:#000}
+.btn-input.green{background:#6ccb5f;color:#000}
+.btn-input.green svg{fill:#000}
+.btn-input:hover{background:#70ccff}
+.btn-input.green:hover{background:#7ed073}
+.btn-input:active{background:#3aa8e0;transform:none}
+.main{flex:1;padding:0 16px 100px}
+/* Tabs - Windows 11 Pivot */
+.tabs{display:flex;gap:4px;background:transparent;border:none;padding:0;border-radius:0;margin:20px 0;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.12)}
+.tab{flex:1;padding:12px;border-radius:4px 4px 0 0;border:none;background:transparent;color:#a3a3a3;font-weight:600;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:.15s;position:relative;overflow:hidden;border-bottom:2px solid transparent}
+.tab:hover{background:rgba(255,255,255,.06);color:#fff}
+.tab svg{width:18px;height:18px;fill:currentColor}
+.tab.active{background:rgba(255,255,255,.06);color:#fff;border-bottom-color:#4cc2ff}
+.tab.active-green{background:rgba(255,255,255,.06);color:#fff;border-bottom-color:#6ccb5f}
 .tab-content{display:none}
-.tab-content.active{display:block}
-.alert{background:rgba(34,197,94,.2);border:1px solid rgba(34,197,94,.3);color:#4ade80;padding:12px;border-radius:12px;font-size:13px;margin-bottom:16px}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:16px}
-.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:8px 10px}
-.card.green{border-color:rgba(34,197,94,.3)}
-.label{font-size:9px;color:#94a3b8;letter-spacing:.8px}
-.big{font-size:15px;font-weight:700;color:#facc15;margin-top:2px}
-.big-green{font-size:15px;font-weight:700;color:#4ade80;margin-top:2px}
-.big2{font-size:12px;font-weight:600;margin-top:2px;word-break:break-all}
-.list{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:16px;overflow:hidden}
-.row{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.05);transition:.15s}
+.tab-content.active{display:block;animation:tabIn .15s ease}
+@keyframes tabIn{from{opacity:0}to{opacity:1}}
+.alert{background:#2b2b2b;border:1px solid #3a5a35;border-left:4px solid #6ccb5f;color:#a9d6a5;padding:12px 16px;border-radius:4px;font-size:13px;margin-bottom:16px}
+/* Cards - Windows 11 Mica Card */
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px}
+.card{background:#2b2b2b;border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:16px 14px}
+.card.green{border-color:rgba(108,203,95,.3);background:#2b2b2b}
+.label{font-size:11px;color:#a3a3a3;letter-spacing:.2px;font-weight:600;text-transform:uppercase}
+.big{font-size:18px;font-weight:600;color:#4cc2ff;margin-top:6px}
+.big-green{font-size:18px;font-weight:600;color:#6ccb5f;margin-top:6px}
+.big2{font-size:13px;font-weight:600;margin-top:6px;word-break:break-all;line-height:1.4}
+/* List - Windows 11 */
+.list{background:#2b2b2b;border:1px solid rgba(255,255,255,.08);border-radius:8px;overflow:hidden}
+.row{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.06);transition:.1s;position:relative;overflow:hidden}
+.row:hover{background:rgba(255,255,255,.04)}
 .row:last-child{border-bottom:none}
-.row.selected{background:rgba(250,204,21,.08)}
-#tabHarian .row.selected{background:rgba(34,197,94,.08)}
-.row-title{font-weight:700;font-size:13px}
-.row-sub{font-size:11px;color:#94a3b8;margin-top:2px}
+.row.selected{background:rgba(76,194,255,.15)}
+#tabHarian .row.selected{background:rgba(108,203,95,.15)}
+.row-title{font-weight:600;font-size:14px}
+.row-sub{font-size:12px;color:#a3a3a3;margin-top:3px}
 .row-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
 .row-check{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
-.price{font-weight:700;font-size:13px;color:#facc15;white-space:nowrap}
-.price-green{font-weight:700;font-size:13px;color:#4ade80;white-space:nowrap}
-.price-red{font-weight:700;font-size:13px;color:#f87171;white-space:nowrap}
-.badge{font-size:10px;padding:3px 8px;border-radius:999px;font-weight:700}
-.badge-in{background:rgba(34,197,94,.2);color:#4ade80}
-.badge-out{background:rgba(239,68,68,.2);color:#f87171}
-.btn-del{width:30px;height:30px;background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.3);border-radius:999px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
-.btn-del svg{width:14px;height:14px;fill:#f87171}
-.empty{padding:24px;text-align:center;color:#94a3b8;font-size:13px}
-.toolbar{display:flex;gap:8px;margin-bottom:10px;align-items:center}
-.btn-tool{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:10px;border-radius:12px;font-weight:700;font-size:12px;cursor:pointer;text-decoration:none;text-align:center;display:block}
-.btn-select{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;padding:10px;border-radius:12px;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
-.btn-select.active{background:rgba(250,204,21,.15);border-color:rgba(250,204,21,.5);color:#facc15}
-.btn-select.active-green{background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.5);color:#4ade80}
-.chk{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-radius:6px;background:transparent;cursor:pointer;position:relative;flex-shrink:0}
-.chk:checked{background:#facc15;border-color:#facc15}
+.price{font-weight:600;font-size:14px;color:#4cc2ff;white-space:nowrap}
+.price-green{font-weight:600;font-size:14px;color:#6ccb5f;white-space:nowrap}
+.price-red{font-weight:600;font-size:14px;color:#ff7a6e;white-space:nowrap}
+.badge{font-size:11px;padding:4px 8px;border-radius:4px;font-weight:600;letter-spacing:0}
+.badge-in{background:rgba(108,203,95,.18);color:#a9d6a5}
+.badge-out{background:rgba(255,122,110,.18);color:#ff9d94}
+.btn-del{width:32px;height:32px;background:transparent;border:none;border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.btn-del:hover{background:rgba(255,255,255,.08)}
+.btn-del svg{width:16px;height:16px;fill:#ff9d94}
+.btn-del:active{background:rgba(255,255,255,.12);transform:none}
+.empty{padding:28px;text-align:center;color:#a3a3a3;font-size:13px}
+.toolbar{display:flex;gap:8px;margin-bottom:12px;align-items:center}
+.btn-tool{flex:1;background:#2d2d2d;border:1px solid rgba(255,255,255,.08);color:#fff;padding:10px;border-radius:4px;font-weight:600;font-size:13px;cursor:pointer;text-decoration:none;text-align:center;display:block}
+.btn-tool:hover{background:#3a3a3a}
+.btn-select{flex:1;background:#2d2d2d;border:1px solid rgba(255,255,255,.08);color:#fff;padding:10px;border-radius:4px;font-weight:600;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-select:hover{background:#3a3a3a}
+.btn-select.active{background:#4cc2ff;color:#000;border-color:#4cc2ff}
+.btn-select.active-green{background:#6ccb5f;color:#000;border-color:#6ccb5f}
+.chk{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:1px solid #a3a3a3;border-radius:4px;background:#2d2d2d;cursor:pointer;position:relative;flex-shrink:0;transition:.1s}
+.chk:hover{border-color:#fff}
+.chk:checked{background:#4cc2ff;border-color:#4cc2ff}
 .chk:checked::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#000;font-size:13px;font-weight:900}
-.chk-green:checked{background:#22c55e;border-color:#22c55e}
-.chk-green:checked::after{color:#fff}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
-.modal.open{display:flex}
-.modal-box{background:#151a2c;border:1px solid rgba(255,255,255,.1);border-radius:24px;width:100%;max-width:384px;padding:24px;max-height:90vh;overflow-y:auto}
-.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.btn-x{width:32px;height:32px;background:rgba(255,255,255,.1);border:none;border-radius:999px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.btn-x svg{width:12px;height:12px;fill:#fff}
-.form{display:flex;flex-direction:column;gap:16px}
-.input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;margin-top:4px;color:#fff;font-size:13px;outline:none}
-.input-yellow{background:rgba(255,255,255,.1);border-color:rgba(250,204,21,.5);color:#facc15;font-weight:700}
+.chk-green:checked{background:#6ccb5f;border-color:#6ccb5f}
+.chk-green:checked::after{color:#000}
+/* === DIALOG - Windows 11 Fluent Dialog (bukan Bottom Sheet lagi) === */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px;z-index:50;opacity:0;transition:opacity .15s}
+.modal.open{display:flex;opacity:1}
+.modal-box{background:#2b2b2b;border:1px solid rgba(255,255,255,.12);border-radius:8px;width:100%;max-width:480px;padding:20px;max-height:92vh;overflow-y:auto;transform:scale(.95);transition:transform .15s;box-shadow:0 16px 48px rgba(0,0,0,.5)}
+.modal.open .modal-box{transform:scale(1)}
+.grabber{display:none}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.modal-head h2{font-size:20px;font-weight:600}
+.modal-sub{font-size:13px;color:#a3a3a3;margin-bottom:20px}
+.btn-x{width:32px;height:32px;background:transparent;border:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.btn-x:hover{background:rgba(255,255,255,.1)}
+.btn-x svg{width:14px;height:14px;fill:#fff}
+.form{display:flex;flex-direction:column;gap:14px}
+.input{width:100%;background:#2d2d2d;border:1px solid rgba(255,255,255,.12);border-bottom:2px solid rgba(255,255,255,.2);border-radius:4px 4px 0 0;padding:12px;margin-top:8px;color:#fff;font-size:14px;outline:none;transition:.15s}
+.input:focus{border-color:#4cc2ff;border-bottom-color:#4cc2ff;background:#323232}
+#modalHarian .input:focus{border-color:#6ccb5f;border-bottom-color:#6ccb5f;background:#2f352e}
+.input-yellow{background:#2d2d2d;border-color:rgba(76,194,255,.4);color:#4cc2ff;font-weight:600;font-size:18px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.label-y{font-size:10px;color:#facc15}
+.label-y{font-size:11px;color:#4cc2ff;letter-spacing:.2px;font-weight:600;text-transform:uppercase}
 .flex-gap{display:flex;gap:8px;margin-top:4px}
-.live{flex:1;background:rgba(250,204,21,.1);border:1px solid rgba(250,204,21,.2);border-radius:12px;padding:12px;font-size:12px;color:#facc15;font-weight:700;text-align:right;display:flex;align-items:center;justify-content:flex-end}
-.btn-save{width:100%;background:#facc15;color:#000;font-weight:700;padding:16px;border-radius:12px;border:none;cursor:pointer;font-size:14px}
-.btn-save.green{background:#22c55e;color:#fff}
+.live{flex:1;background:#2d2d2d;border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:12px;font-size:13px;color:#4cc2ff;font-weight:600;text-align:right;display:flex;align-items:center;justify-content:flex-end}
+#modalHarian .live{background:#2b2b2b;color:#6ccb5f}
+.btn-save{width:100%;background:#4cc2ff;color:#000;font-weight:600;padding:12px;border-radius:4px;border:none;cursor:pointer;font-size:14px;margin-top:4px}
+.btn-save:hover{background:#70ccff}
+.btn-save:active{background:#3aa8e0;transform:none}
+.btn-save.green{background:#6ccb5f;color:#000}
+.btn-save.green:hover{background:#7ed073}
+.toggle{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:#2d2d2d;padding:4px;border-radius:4px}
+.toggle button{padding:10px;border:none;border-radius:4px;font-weight:600;font-size:14px;cursor:pointer;background:transparent;color:#a3a3a3;transition:.1s}
+.toggle button:hover{color:#fff}
+.toggle button.on-in{background:#6ccb5f;color:#000}
+.toggle button.on-out{background:#ff7a6e;color:#000}
+#deleteModal,#bulkModal{align-items:center;padding:16px}
+#deleteModal .modal-box,#bulkModal .modal-box{border-radius:8px;transform:scale(.95);padding:24px;max-width:360px}
+#deleteModal.open .modal-box,#bulkModal.open .modal-box{transform:scale(1)}
 .del-box{text-align:center}
-.del-icon{width:56px;height:56px;background:rgba(239,68,68,.2);border:1px solid rgba(239,68,68,.3);border-radius:999px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
-.del-icon svg{width:26px;height:26px;fill:#f87171}
-.del-text{font-size:13px;color:#94a3b8;margin-top:8px}
-.del-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
-.btn-cancel{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);padding:12px;border-radius:12px;font-weight:700;font-size:13px;color:#fff;cursor:pointer}
-.btn-confirm{background:#ef4444;color:#fff;padding:12px;border-radius:12px;font-weight:700;font-size:13px;border:none;cursor:pointer}
-.toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:rgba(255,255,255,.05);padding:6px;border-radius:12px}
-.toggle button{padding:10px;border:none;border-radius:9px;font-weight:700;font-size:13px;cursor:pointer;background:transparent;color:#94a3b8}
-.toggle button.on-in{background:#22c55e;color:#fff}
-.toggle button.on-out{background:#ef4444;color:#fff}
-.bulk-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;background:#1e2438;border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:12px 14px;display:none;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-.bulk-bar.show{display:flex;animation:slideUp .2s ease}
-@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-.bulk-info{font-size:12px;font-weight:700}
-.bulk-info small{display:block;color:#94a3b8;font-weight:400;font-size:11px;margin-top:2px}
+.del-icon{width:56px;height:56px;background:rgba(255,122,110,.12);border:none;border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.del-icon svg{width:28px;height:28px;fill:#ff9d94}
+.del-text{font-size:13px;color:#a3a3a3;margin-top:8px;line-height:1.5}
+.del-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:24px}
+.btn-cancel{background:#2d2d2d;border:1px solid rgba(255,255,255,.12);padding:10px;border-radius:4px;font-weight:600;font-size:14px;color:#fff;cursor:pointer}
+.btn-cancel:hover{background:#3a3a3a}
+.btn-confirm{background:#ff7a6e;color:#000;padding:10px;border-radius:4px;font-weight:600;font-size:14px;border:none;cursor:pointer}
+.btn-confirm:hover{background:#ff9d94}
+.bulk-bar{position:fixed;left:16px;right:16px;bottom:16px;z-index:40;background:#2b2b2b;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 12px 32px rgba(0,0,0,.5)}
+.bulk-bar.show{display:flex;animation:slideUp .15s}
+@keyframes slideUp{from{transform:translateY(8px);opacity:0}to{transform:translateY(0);opacity:1}}
+.bulk-info{font-size:13px;font-weight:600}
+.bulk-info small{display:block;color:#a3a3a3;font-weight:400;font-size:11px;margin-top:2px}
 .bulk-actions{display:flex;gap:8px;flex-shrink:0}
-.btn-bulk-cancel{background:rgba(255,255,255,.1);border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer}
-.btn-bulk-del{background:#ef4444;border:none;color:#fff;padding:10px 14px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer}
-.bulk-modal-list{max-height:140px;overflow-y:auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:10px 12px;text-align:left;font-size:12px;line-height:1.8;margin:14px 0}
-
+.btn-bulk-cancel{background:#2d2d2d;border:1px solid rgba(255,255,255,.12);color:#fff;padding:10px 14px;border-radius:4px;font-weight:600;font-size:13px;cursor:pointer}
+.btn-bulk-del{background:#ff7a6e;border:none;color:#000;padding:10px 14px;border-radius:4px;font-weight:600;font-size:13px;cursor:pointer}
+.bulk-modal-list{max-height:140px;overflow-y:auto;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:12px;text-align:left;font-size:12px;line-height:1.8;margin:14px 0}
+/* Windows 11 - GAK PAKE RIPPLE */
+.ripple{display:none !important}
+@keyframes ripple{to{transform:scale(4);opacity:0}}

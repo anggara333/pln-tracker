@@ -20,11 +20,6 @@
   table.data th.center, table.data td.center { text-align: center; }
   table.data td { border-bottom: 1px solid #ddd; padding: 7px 6px; vertical-align: top; }
   table.data tr:nth-child(even) td { background: #f9fafb; }
-  .in { font-weight: bold; }
-  .out { font-weight: bold; }
-  .saldo { font-weight: bold; }
-  .uraian { font-weight: bold; }
-  .catatan { color: #666; font-size: 10px; }
   .footer { margin-top: 14px; display: table; width: 100%; font-size: 10px; color: #666; border-top: 1px solid #000; padding-top: 8px; }
   .footer-left { display: table-cell; }
   .footer-right { display: table-cell; text-align: right; }
@@ -34,7 +29,7 @@
 
 <div class="header">
   <div class="header-left">
-    <h2>LAPORAN HARIAN</h2>
+    <h2 style="text-transform:uppercase; text-align:center">LAPORAN HARIAN - {{ \Carbon\Carbon::now()->locale('id')->translatedFormat('F Y') }}</h2>
     <p class="sub">Super Apps - Laporan Keuangan Harian</p>
   </div>
   <div class="header-right">
@@ -72,11 +67,11 @@
     @forelse($harians as $h)
     <tr>
       <td class="center">{{ $h->tanggal->format('d M Y') }}</td>
-      <td><span class="uraian">{{ $h->uraian }}</span></td>
-      <td class="num in">{{ $h->kredit > 0 ? 'Rp '.number_format($h->kredit,0,',','.') : '-' }}</td>
-      <td class="num out">{{ $h->debit > 0 ? 'Rp '.number_format($h->debit,0,',','.') : '-' }}</td>
-      <td class="num saldo">Rp {{ number_format($h->saldo,0,',','.') }}</td>
-      <td><span class="catatan">{{ $h->catatan ?? '-' }}</span></td>
+      <td>{{ $h->uraian }}</td>
+      <td style="text-align:right">{{ $h->kredit > 0 ? 'Rp '.number_format($h->kredit,0,',','.') : '-' }}</td>
+      <td style="text-align:right">{{ $h->debit > 0 ? 'Rp '.number_format($h->debit,0,',','.') : '-' }}</td>
+      <td style="text-align:right">Rp {{ number_format($h->saldo,0,',','.') }}</td>
+      <td style="text-align:center">{{ $h->catatan ?? '-' }}</td>
     </tr>
     @empty
     <tr><td colspan="6" style="text-align:center;padding:20px;color:#888">Belum ada transaksi harian</td></tr>
@@ -96,7 +91,6 @@
 </table>
 
 <div class="footer">
-  <div class="footer-left">Super Apps - Daily Report</div>
   <div class="footer-right">Dicetak : {{ date('d M Y, H:i') }}</div>
 </div>
 
