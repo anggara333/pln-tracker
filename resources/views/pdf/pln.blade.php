@@ -42,7 +42,7 @@
 <table class="tot-box"><tr>
   <td>
     <span class="tot-label">TOTAL PEMAKAIAN</span>
-    <span class="tot-val">{{ number_format($totalKwh,0,',','.') }} kWh</span>
+    <span class="tot-val">{{ number_format($totalKwh,2,',','.') }} kWh</span>
   </td>
   <td>
     <span class="tot-label">TOTAL BAYAR</span>
@@ -50,7 +50,7 @@
   </td>
   <td>
     <span class="tot-label">RATA-RATA / HARI</span>
-    <span class="tot-val">{{ number_format($rataKwh,0,',','.') }} kWh</span>
+    <span class="tot-val">{{ number_format($rataKwh,2,',','.') }} kWh</span>
   </td>
 </tr></table>
 

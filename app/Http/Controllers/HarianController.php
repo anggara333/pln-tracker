@@ -113,26 +113,27 @@ class HarianController extends Controller
     }
     
     public function bulkDelete(Request $request)
-{
-    $ids = $request->input('ids', []);
-    Harian::whereIn('id', $ids)->delete();
-    // hitung ulang saldo dari awal
-    $all = Harian::orderBy('tanggal','asc')->orderBy('id','asc')->get();
-    $saldo = 0;
-    foreach($all as $h){
-        $saldo += $h->kredit - $h->debit;
-        $h->updateQuietly(['saldo' => $saldo]);
+    {
+        $ids = $request->input('ids', []);
+        Harian::whereIn('id', $ids)->delete();
+        
+        $all = Harian::orderBy('tanggal','asc')->orderBy('id','asc')->get();
+        $saldo = 0;
+        foreach($all as $h){
+            $saldo += $h->kredit - $h->debit;
+            $h->updateQuietly(['saldo' => $saldo]);
+        }
+        return back()->with('success', count($ids).' transaksi dihapus!');
     }
-    return back()->with('success', count($ids).' transaksi dihapus!');
-}
 
-public function exportPdf()
-{
-    $harians = Harian::orderBy('tanggal','asc')->orderBy('id','desc')->get();
-    $totalKredit = $harians->sum('kredit');
-    $totalDebit = $harians->sum('debit');
-    $saldoAkhir = $harians->first()?->saldo ?? 0;
-    $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.harian', compact('harians','totalKredit','totalDebit','saldoAkhir'));
-    return $pdf->download('laporan-harian-'.date('Y-m-d').'.pdf');
-}
+    public function exportPdf()
+    {
+        $harians = Harian::orderBy('tanggal','asc')->orderBy('id','asc')->get();
+        $totalKredit = $harians->sum('kredit');
+        $totalDebit = $harians->sum('debit');
+        $saldoAkhir = $harians->last()?->saldo ?? 0;
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.harian', compact('harians','totalKredit','totalDebit','saldoAkhir'));
+        
+        return $pdf->download('laporan-harian-'.date('Y-m-d').'.pdf');
+    }
 }
